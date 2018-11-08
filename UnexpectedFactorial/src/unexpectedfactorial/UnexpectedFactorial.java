@@ -1,16 +1,48 @@
 package unexpectedfactorial;
+
 import java.util.*;
+import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 /**
  *
  * @author Tim Barber
  */
-
 public class UnexpectedFactorial {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException {
         System.out.println("Copyright 2018 Tim Barber"); //Header
-        
-        
+
+        Scanner keyboard = new Scanner(System.in);
+        Scanner number = new Scanner(new File("number.dat"));
+        int number_num = -1;
+        if (number.hasNextInt()) {
+            number_num = number.nextInt();
+        }
+        Scanner file = new Scanner(new File("Text.dat"));
+
+        FileWriter writer = new FileWriter(new File("output.txt"));
+        PrintWriter print_line = new PrintWriter(writer);
+
+        if (number_num > -1) {
+            int solved = FactorialFinder.factorial(number_num);
+            System.out.println(solved);
+            print_line.print("\n" + solved + "\n");
+        } else if (file.hasNext()) {
+            String solved = FactorialFinder.solve(file.toString());
+            System.out.println(solved);
+            print_line.print("\n" + solved + "\n");
+        } else {
+            System.out.print("Enter your text: ");
+            String text = keyboard.nextLine();
+            String solved = FactorialFinder.solve(text);
+            System.out.println(solved);
+            print_line.print("\n" + solved + "\n");
+        }
+
     }
 }
 
@@ -34,6 +66,6 @@ public class UnexpectedFactorial {
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
