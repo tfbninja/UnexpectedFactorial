@@ -1,5 +1,5 @@
 # UnexpectedFactorial
-Inspired by the community of reddit.com/r/unexpectedfactorial, this program takes in text, and evaluates any and all factorials (unexpected or not) and gives you the result.
+Inspired by the community of [r/unexpectedfactorial](reddit.com/r/unexpectedfactorial), this program takes in text, and evaluates any and all factorials (unexpected or not) and gives you the result.
 From r/unexpectedfactorial:
 "What is the Sub?
 It's a math joke. If you don't like math you can leave now. If you do, and want to learn about it, here you go.
