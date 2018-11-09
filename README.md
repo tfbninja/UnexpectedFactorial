@@ -13,7 +13,7 @@ For example, if you said: "Lets meet at 6!", that would evaluate to "Lets meet a
 This program simplifies your life by evaluating all the factorials so you don't have to.
 
 ## Running the program
-If you don't have NetBeans and or don't know what NetBeans is, download this repository, and unzip `UnexpectedFactorial.zip`.
+If you don't have NetBeans and or don't know what NetBeans is, download this repository, and unzip `RunnerProgram.zip`.
 Once you have done this, find `Text.txt`. If there isn't one, run `UnexpectedFactorial.jar`, and it will create one for you. Inside `Text.txt`, put in your text <sup>(wow, no duh)</sup>, save it, and run `UnexpectedFactorial.jar` again. The output will be saved in the <sup>(wait for it...)</sup> `output.txt` file. Have fun!
 
 If you do have NetBeans, simply open the project inside NetBeans, and run `UnexpectedFactorial.java` from the src folder. It can take input from either `Text.txt`, or System.in, with `Text.txt` having first priority.
