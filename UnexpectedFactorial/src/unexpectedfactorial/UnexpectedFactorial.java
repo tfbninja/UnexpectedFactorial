@@ -23,7 +23,7 @@ public class UnexpectedFactorial {
         } catch (FileNotFoundException e) {
             FileWriter creater = new FileWriter(new File("Text.txt"));
             PrintWriter printer = new PrintWriter("Text.txt", "UTF-8");
-            printer.print("Put your text in here!");
+            printer.print("This is getting out of hand, now there are 2! of them!");
             printer.close();
             creater.close();
             file = new Scanner("");
