@@ -1,6 +1,6 @@
 # UnexpectedFactorial
-Inspired by the community of [r/unexpectedfactorial](https://www.reddit.com/r/unexpectedfactorial/top/), this program takes in text, and evaluates any and all factorials (unexpected or not) and gives you the result.
-From r/unexpectedfactorial:
+Inspired by the community of [r/unexpectedfactorial](https://www.reddit.com/r/unexpectedfactorial/hot/), this program takes in text, and evaluates any and all factorials (unexpected or not) and gives you the result.
+From [r/unexpectedfactorial](https://www.reddit.com/r/unexpectedfactorial/hot/):
 "What is the Sub?
 It's a math joke. If you don't like math you can leave now. If you do, and want to learn about it, here you go.
 When you put an '!' next to a number, it makes it look like a factorial. Sometimes people do this on accident, as you can see in all the posts in the sub."
