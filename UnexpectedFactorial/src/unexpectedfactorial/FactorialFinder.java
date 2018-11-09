@@ -56,7 +56,7 @@ public class FactorialFinder {
             }
             output += "\n";
         }
-        return output.toString().trim();
+        return output.trim();
     }
 
     public static String addCommas(String text) {
