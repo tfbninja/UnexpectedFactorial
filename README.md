@@ -9,6 +9,6 @@ This program simplifies your life by evaluating all the factorials so you don't 
 
 ## Running the program
 If you don't have NetBeans and or don't know what NetBeans is, download this repository, and unzip the 'UnexpectedFactorial.zip' folder.
-Once you have done this, find the 'Text.txt' file. If there isn't one, run 'UnexpectedFactorial.jar' and it will create on for you. Inside 'Text.txt', put your text (wow, no duh), save it, and run 'UnexpectedFactorial.jar' again. The output will be saved in the (wait for it...) output.txt file. Have fun!
+Once you have done this, find the 'Text.txt' file. If there isn't one, run 'UnexpectedFactorial.jar' and it will create one for you. Inside 'Text.txt', put your text <sup>(wow, no duh)</sup>, save it, and run 'UnexpectedFactorial.jar' again. The output will be saved in the <sup>(wait for it...)</sup> output.txt file. Have fun!
 
 If you do have NetBeans, simply open the project inside NetBeans, and run 'UnexpectedFactorial.java' from the src folder. It can take input from either the 'Text.txt' file, or System.in, with Text.txt having priority. 
