@@ -1,11 +1,11 @@
 package unexpectedfactorial;
 
-import java.util.*;
-import java.util.Scanner;
 import java.io.File;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 /**
  *
@@ -17,31 +17,41 @@ public class UnexpectedFactorial {
         System.out.println("Copyright 2018 Tim Barber"); //Header
 
         Scanner keyboard = new Scanner(System.in);
-        Scanner number = new Scanner(new File("number.dat"));
-        int number_num = -1;
-        if (number.hasNextInt()) {
-            number_num = number.nextInt();
+        Scanner file;
+        try {
+            file = new Scanner(new File("Text.txt"));
+        } catch (FileNotFoundException e) {
+            FileWriter creater = new FileWriter(new File("Text.txt"));
+            PrintWriter printer = new PrintWriter("Text.txt", "UTF-8");
+            printer.print("Put your text in here!");
+            printer.close();
+            creater.close();
+            file = new Scanner("");
         }
-        Scanner file = new Scanner(new File("Text.dat"));
 
         FileWriter writer = new FileWriter(new File("output.txt"));
-        PrintWriter print_line = new PrintWriter(writer);
+        PrintWriter print_line = new PrintWriter("output.txt", "UTF-8");
 
-        if (number_num > -1) {
-            int solved = FactorialFinder.factorial(number_num);
+        if (file.hasNext()) {
+            String solved = FactorialFinder.solve(file.useDelimiter("\\Z").next());
+            /*
+             * I found this ingenious way to set a string to a file with a
+             * scanner by setting the token delimiter to \Z, which is the end of
+             * a string anchor (whatever that means). Setting the delimeter to
+             * this effectively makes the entire file one big token, which you
+             * can then access with .next() method.
+             * source: "https://stackoverflow.com/a/3403112/8079326"
+             */
             System.out.println(solved);
-            print_line.print("\n" + solved + "\n");
-        } else if (file.hasNext()) {
-            String solved = FactorialFinder.solve(file.toString());
-            System.out.println(solved);
-            print_line.print("\n" + solved + "\n");
+            print_line.print(solved);
         } else {
             System.out.print("Enter your text: ");
             String text = keyboard.nextLine();
             String solved = FactorialFinder.solve(text);
             System.out.println(solved);
-            print_line.print("\n" + solved + "\n");
+            print_line.print(solved);
         }
+        print_line.close();
 
     }
 }

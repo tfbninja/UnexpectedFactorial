@@ -1,5 +1,6 @@
 package unexpectedfactorial;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,47 +12,106 @@ public class FactorialFinder {
 
     private String usrText;
     ArrayList<Integer> nums = new ArrayList();
+    private static DecimalFormat df = new DecimalFormat("#");
+
+    static {
+        df.setMaximumFractionDigits(0);
+    }
 
     public static String solve(String userText) {
         String output = "";
         Scanner chop = new Scanner(userText);
-        while (chop.hasNext()) {
-            String token = chop.next();
-            if (token.replaceAll("!", "").length() != token.length()) {
-                //contains "!"
-                int firstIndex = token.indexOf("!");
-                if (firstIndex > 0 && Character.isDigit(token.charAt(firstIndex - 1))) {
-                    String newToken = token.replaceAll("[a-zA-Z]", "");
-                    //replace all letters with nothing
-                    int newNum = factorial(newToken);
-                    output += newNum;
+        while (chop.hasNextLine()) {
+            Scanner line = new Scanner(chop.nextLine());
+            tokenprocessor:
+            while (line.hasNext()) {
+                String token = line.next();
+                if (token.replaceAll("!", "").length() != token.length()) {
+                    //contains "!"
+                    int firstIndex = token.indexOf("!");
+                    if (firstIndex > 0 && Character.isDigit(token.charAt(firstIndex - 1))) {
+                        //now check it isn't within a word
+                        for (char i : token.toCharArray()) {
+                            if (!Character.isDigit(i) && i != '!') {
+                                output += token + " ";
+                                //if it is within a word, it doesn't count, so continue scanning the next tokens
+                                continue tokenprocessor;
+                            }
+                        }
+                        int newToken = Integer.valueOf(token.trim().replaceAll("[a-zA-Z]", "").replaceAll("!", ""));
+                        //replace all letters with nothing
+                        long newNum;
+                        if (newToken <= 20) {
+                            newNum = sub20Factorial(newToken);
+                            output += addCommas(newNum + "") + " ";
+                        } else {
+                            output += addCommas(df.format(doubleFactorial(newToken))) + " ";
+                        }
+                    } else {
+                        output += token + " ";
+                    }
                 } else {
-                    output += token;
+                    output += token + " ";
                 }
-            } else {
-                output += token;
             }
+            output += "\n";
         }
-        return output.toString();
+        return output.toString().trim();
     }
 
-    public static int factorial(String num) {
+    public static String addCommas(String text) {
+        DecimalFormat df = new DecimalFormat("#,###");
+        if (!text.equals("∞")) {
+            return df.format(Double.valueOf(text));
+        }
+        return text;
+    }
+
+    public static boolean containsFactorial(String text) {
+        Scanner chop = new Scanner(text);
+        boolean contains = false;
+        while (chop.hasNext()) {
+            String token = chop.next();
+            if (token.charAt(token.length() - 1) == '!') {
+                String nums = token.substring(0, token.length() - 2);
+                boolean allInts = true;
+                for (char i : nums.toCharArray()) {
+                    allInts = allInts && Character.isDigit(i);
+                }
+                return allInts;
+            } else {
+                boolean allInts = true;
+                for (char i : token.toCharArray()) {
+                    allInts = allInts && Character.isDigit(i);
+                }
+                return allInts;
+            }
+        }
+
+        return contains;
+    }
+
+    public static long sub20Factorial(String num) {
         if (num.charAt(num.length() - 1) == '!') { // remove exclamation mark if necessary
             num = num.substring(0, num.length() - 1);
         }
-        int total = 1;
-        for (int i = 1; i <= Integer.valueOf(num); i++) {
+        return sub20Factorial(Integer.valueOf(num));
+    }
+
+    public static long sub20Factorial(int num) {
+        long total = 1;
+        for (int i = 2; i <= num; i++) {
             total *= i;
         }
         return total;
     }
 
-    public static int factorial(int num) {
-        int total = 1;
-        for (int i = 1; i <= num; i++) {
-            total *= i;
+    public static Double doubleFactorial(int num) {
+        double result = 1;
+        for (int i = 2; i <= num; i++) {
+            result *= i;
         }
-        return total;
+        return result;
     }
 }
 
