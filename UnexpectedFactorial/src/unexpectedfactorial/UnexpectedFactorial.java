@@ -43,7 +43,7 @@ public class UnexpectedFactorial {
              * source: "https://stackoverflow.com/a/3403112/8079326"
              */
             System.out.println(solved);
-            print_line.print(solved);
+            print_line.print(solved + "");
         } else {
             System.out.print("Enter your text: ");
             String text = keyboard.nextLine();
